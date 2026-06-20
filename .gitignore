@@ -1,0 +1,10 @@
+# Environnements virtuels
+venv/
+__pycache__/
+
+# Variables d'environnement
+.env
+
+# Dossier de données (ne jamais push de la donnée sur GitHub)
+data/
+*.csv

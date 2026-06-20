@@ -1,0 +1,14 @@
+# Orchestration & Transformation
+apache-airflow
+dbt-bigquery
+
+# Base Vectorielle & IA
+qdrant-client
+llama-index
+llama-index-llms-vertex
+llama-index-embeddings-vertex
+
+# Évaluation & Utils
+ragas
+pandas
+python-dotenv
