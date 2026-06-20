@@ -1,10 +1,14 @@
 import os
 import google.auth
+from dotenv import load_dotenv
 from google.cloud import bigquery
 from qdrant_client import QdrantClient
 from llama_index.core import Document, VectorStoreIndex, StorageContext
 from llama_index.vector_stores.qdrant import QdrantVectorStore
 from llama_index.embeddings.vertex import VertexTextEmbedding
+
+# On charge le fichier .env
+load_dotenv()
 
 # 1. Configuration du projet GCP
 PROJECT_ID = "modern-data-rag" 
@@ -16,9 +20,11 @@ print("🚀 Démarrage du pipeline d'ingestion vectorielle...")
 # 2. Initialisation des clients
 bq_client = bigquery.Client(project=PROJECT_ID)
 
-# Initialisation de Qdrant en local (créera un dossier 'qdrant_data' dans ton projet)
-qdrant_client = QdrantClient(path="./qdrant_data")
-
+# 👈 NOUVELLE CONNEXION AU CLOUD
+qdrant_client = QdrantClient(
+    url=os.getenv("QDRANT_URL"), 
+    api_key=os.getenv("QDRANT_API_KEY")
+)
 # 3. Requête pour récupérer les données propres
 query = f"""
     SELECT ticket_id, category, description, priority, created_date 
