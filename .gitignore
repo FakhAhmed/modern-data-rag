@@ -8,3 +8,4 @@ __pycache__/
 # Dossier de données (ne jamais push de la donnée sur GitHub)
 data/
 *.csvlogs/
+qdrant_data/
