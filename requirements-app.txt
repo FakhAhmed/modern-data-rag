@@ -1,0 +1,8 @@
+streamlit
+python-dotenv
+google-cloud-bigquery
+qdrant-client
+llama-index
+llama-index-vector-stores-qdrant
+llama-index-embeddings-vertex
+llama-index-llms-vertex
