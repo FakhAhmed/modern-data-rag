@@ -1,0 +1,13 @@
+dbt_transform:
+  outputs:
+    dev:
+      dataset: it_support_clean
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      location: europe-west9
+      method: oauth
+      priority: interactive
+      project: modern-data-rag
+      threads: 1
+      type: bigquery
+  target: dev

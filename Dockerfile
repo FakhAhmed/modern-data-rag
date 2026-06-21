@@ -1,18 +1,22 @@
-# On part d'un Python officiel et léger
+# 1. Utiliser une image Python officielle légère
 FROM python:3.11-slim
 
-# On définit le dossier de travail dans le conteneur
+# 2. Installer les outils système nécessaires (git, dbt, etc.)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# 3. Définir le répertoire de travail
 WORKDIR /app
 
-# On copie JUSTE le fichier léger pour l'application
+# 4. Copier les dépendances et installer
 COPY requirements-app.txt .
-RUN pip install --no-cache-dir -r requirements-app.txt
+# On ajoute dbt-bigquery explicitement si besoin
+RUN pip install --no-cache-dir -r requirements-app.txt dbt-bigquery
 
-# On copie le reste de notre code (dossiers app, scripts, etc.)
+# 5. Copier tout le code source
 COPY . .
 
-# On expose le port de Streamlit
-EXPOSE 8080
-
-# La commande pour démarrer le site
-CMD ["streamlit", "run", "app/main.py", "--server.port=8080", "--server.address=0.0.0.0"]
+# 6. Utiliser ton script comme point d'entrée pour Cloud Run
+# On lance le pipeline, et une fois fini, le conteneur s'arrête (parfait pour Cloud Run)
+CMD ["python", "run_pipeline.py"]
