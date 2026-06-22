@@ -1,14 +1,10 @@
-# Orchestration & Transformation
-apache-airflow
-dbt-bigquery
-
-# Base Vectorielle & IA
-qdrant-client
-llama-index
-llama-index-llms-vertex
-llama-index-embeddings-vertex
-
-# Évaluation & Utils
-ragas
-pandas
+streamlit
 python-dotenv
+google-auth
+google-cloud-aiplatform
+qdrant-client
+llama-index-core
+llama-index-vector-stores-qdrant
+llama-index-embeddings-vertex
+llama-index-llms-vertex
+nest-asyncio
