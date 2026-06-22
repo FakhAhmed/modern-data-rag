@@ -22,9 +22,9 @@ from llama_index.core.evaluation import FaithfulnessEvaluator, RelevancyEvaluato
 load_dotenv()
 st.set_page_config(page_title="IT Support - AI Analytics", page_icon="🤖", layout="wide")
 st.title("🤖 Assistant IA - Support Technique IT")
-@st.cache_resource(show_spinner="Initialisation de l'IA (veuillez patienter)...")
+
 def init_rag_engine():
-    PROJECT_ID = "modern-data-rag"  
+    PROJECT_ID = "modern-data-rag"
     LOCATION = "global"
     credentials, project = google.auth.default()
     
